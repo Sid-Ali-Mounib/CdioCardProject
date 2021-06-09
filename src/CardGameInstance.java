@@ -11,8 +11,8 @@ public class CardGameInstance {
         ArrayList<String> stringCards = new ArrayList<String>();
 
 
-        ArrayList<Card>[] lists =new ArrayList[7];
-
+        //ArrayList<Card>[] lists =new ArrayList[7];
+        Pile[] piles = new TableauPile[7];
 
 
 
@@ -32,31 +32,20 @@ public class CardGameInstance {
     for (int i = 0; i < stringCards.size() ; i++) {
 
         String[] words = stringCards.get(i).split(" ");
-        boolean red;
-        if(words[0].equals("Hearts") || words[0].equals("Diamonds")){
-            red = true;
-        }else {
-            red = false;
-        }
-
-        Card cardIndex = new Card(words[0],findValueOfCard(words[1]),red);
-
-        lists[i]=new ArrayList<>();
-        lists[i].add(cardIndex);
+        String suit = words[0].toUpperCase();
 
 
+        Card cardIndex = new Card(Suit.valueOf(suit),Rank.setRank(words[1]));
 
-
-
-
+        piles[i]=new TableauPile();
+        piles[i].addCard(cardIndex);
 
 
     }
 
+    Solver.solveGame(piles);
 
-        Solver.solveGame(lists);
-        Solver.solveGame(lists);
-        Solver.solveGame(lists);
+
 }
 
 
