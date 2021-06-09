@@ -2,39 +2,28 @@ import javax.swing.text.StyledEditorKit;
 
 public class Card {
 
+    private final Suit suit;
+    private final Rank rank;
 
-    private final String Symbol;
-    private final int Value;
-    private final boolean Red;
-
-
-    public Card(String Symbol, int Value, boolean Red){
-
-        this.Symbol = Symbol;
-        this.Value = Value;
-        this.Red = Red;
+    public Card(Suit suit, Rank rank) {
+        this.suit = suit;
+        this.rank = rank;
     }
 
-
-    public String getCard(){
-        return Value+" of "+Symbol;
+    public Suit getSuit() {
+        return suit;
     }
 
-    public int getCardValue(){
-        return Value;
+    public Rank getRank() {
+        return rank;
     }
 
-    public String getCardSymbol(){
-        return Symbol;
+    public boolean isRed() {
+        return suit == Suit.HEARTS || suit == Suit.DIAMONDS;
     }
-
-    public boolean isCardRed(){
-        return Red;
-    }
-
 
     @Override
     public String toString() {
-        return Value+" of "+Symbol;
+        return getRank().printRank() +" of "+ getSuit().printSuit();
     }
 }

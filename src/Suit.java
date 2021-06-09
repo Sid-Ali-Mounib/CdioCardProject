@@ -1,8 +1,8 @@
 public enum  Suit {
 
-    HEART("Hearts"), SPADE("Spades"), DIAMOND("Diamonds"), CLUB("Clubs");
+    HEARTS("Hearts"), SPADES("Spades"), DIAMONDS("Diamonds"), CLUBS("Clubs");
 
-    String suit;
+    private String suit;
 
     Suit(String suit) {
         this.suit = suit;
@@ -11,6 +11,4 @@ public enum  Suit {
     String printSuit() {
         return suit;
     }
-
-
 }
