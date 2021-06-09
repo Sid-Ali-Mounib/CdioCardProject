@@ -13,33 +13,28 @@ public class CardSolver {
         }
         System.out.println("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
 
-        for (int i = 0;i<visibleCard.length; i++) {
+        for (int i = 0; i < visibleCard.length; i++) {
 
             for (int j = 0; j < visibleCard.length; j++) {
 
 
+                        if (visibleCard[i].size()!=0 && visibleCard[j].size() != 0 ){
+
+                            int movingCardFrom=visibleCard[i].get(0).getCardValue();
+                            int movingCardTo=visibleCard[j].get(0).getCardValue()-1;
+                            boolean cardsHaveDifferentColor = visibleCard[i].get(0).isCardRed()!=visibleCard[j].get(0).isCardRed();
+                            boolean notOnTheSameRow = visibleCard[i]!=visibleCard[j];
 
 
-                        int movingCardFrom=visibleCard[i].get(visibleCard[i].size()-1).getCardValue();
-                        int movingCardTo=visibleCard[j].get(visibleCard[j].size()-1).getCardValue()-1;
-                        boolean cardsHaveDifferentColor = visibleCard[i].get(visibleCard[i].size()-1).isCardRed()!=visibleCard[j].get(visibleCard[j].size()-1).isCardRed();
-                        boolean notOnTheSameRow = visibleCard[i]!=visibleCard[j];
+                            if (movingCardFrom == movingCardTo && cardsHaveDifferentColor && notOnTheSameRow){
+                                for (int l = 0; l < visibleCard[i].size();) {
+                                    visibleCard[j].add(visibleCard[i].get(l));
+                                    visibleCard[i].remove(l);
 
-
-                        if (movingCardFrom == movingCardTo && cardsHaveDifferentColor && notOnTheSameRow){
-
-                            for (int l = j; l < visibleCard[i].size();) {
-
-                                visibleCard[j].add(visibleCard[i].get(l));
-                                visibleCard[i].remove(l);
-
-
+                                }
                             }
-
-
-
-
                         }
+
 
 
 
