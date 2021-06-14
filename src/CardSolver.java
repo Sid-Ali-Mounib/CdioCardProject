@@ -33,11 +33,6 @@ public class CardSolver {
                                 }
                             }
                         }
-
-
-
-
-
             }
         }
         for (int i = 0; i < rowCard.length ; i++) {
