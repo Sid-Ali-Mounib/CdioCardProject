@@ -23,7 +23,7 @@ public enum Rank {
         Rank rank;
 
         switch (value) {
-            case "1": rank = Rank.ACE;
+            case "Ace": rank = Rank.ACE;
                 break;
             case "2": rank = Rank.TWO;
                 break;
@@ -43,15 +43,14 @@ public enum Rank {
                 break;
             case "10": rank = Rank.TEN;
                 break;
-            case "11": rank = Rank.JACK;
+            case "Jack": rank = Rank.JACK;
                 break;
-            case "12": rank = Rank.QUEEN;
+            case "Queen": rank = Rank.QUEEN;
                 break;
-            case "13": rank = Rank.KING;
+            case "King": rank = Rank.KING;
                 break;
             default: rank = null;
         }
         return rank;
     }
-
 }
