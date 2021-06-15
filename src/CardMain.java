@@ -1,15 +1,10 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class CardMain {
     public static void main(String[] args) {
 
-
-
-
-
         CardGameInstance game = new CardGameInstance();
-        game.startGame();
 
+        do {
+            game.startGame();
+        } while (Server.getInstance().isActive());
     }
 }

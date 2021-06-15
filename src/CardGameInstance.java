@@ -1,8 +1,11 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class CardGameInstance {
+
 
     public void startGame(){
 
@@ -26,29 +29,57 @@ public class CardGameInstance {
     stringCards.add("Spades 4");
     stringCards.add("Diamonds 5");
     stringCards.add("Hearts 9");
-
     */
 
-    for (int i = 0; i < stringCards.size() ; i++) {
+        for (int i = 0; i < stringCards.size() ; i++) {
 
-        String[] words = stringCards.get(i).split(" ");
-        String suit = words[0].toUpperCase();
+            String[] words = stringCards.get(i).split(" ");
+            String suit = words[0].toUpperCase();
 
 
-        Card cardIndex = new Card(Suit.valueOf(suit),Rank.setRank(words[1]));
+            Card cardIndex = new Card(Suit.valueOf(suit),Rank.setRank(words[1]));
 
-        piles[i]=new TableauPile();
-        piles[i].addCard(cardIndex);
+            piles[i]=new TableauPile();
+            piles[i].addCard(cardIndex);
+        }
+
+        Solver.solveGame(piles);
     }
 
-    Solver.solveGame(piles);
-}
 
+    /*
+    private final CardSolver solver;
+    private final Server server = Server.getInstance();
+    private Pile[] piles = new TableauPile[7];
 
+    public CardGameInstance() {
+        solver = new CardSolver();
+        server.connect();
 
-
-    private int findValueOfCard(String card){
-        return Integer.parseInt(card);
+        for (int i = 0; i < 7; i++) {
+            piles[i] = new TableauPile();
+        }
     }
 
+    public void startGame() {
+
+
+        List<String> stringCards = server.getCardList();
+
+
+        for (int i = 0; i < stringCards.size(); i++) {
+
+            String[] words = stringCards.get(i).split(" ");
+            String suit = words[0].toUpperCase();
+
+
+            Card cardIndex = new Card(Suit.valueOf(suit), Rank.setRank(words[1]));
+
+            piles[i].addCard(cardIndex);
+
+        }
+        solver.solveGame(piles);
+    }
+
+     */
 }

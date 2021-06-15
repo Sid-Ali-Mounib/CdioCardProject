@@ -11,6 +11,7 @@ public class Server {
     private ServerSocket socket;
     private static final Server instance = new Server();
     private final List<String> cardList = new ArrayList<>();
+    private boolean isActive;
 
     private Server() {
         try {
@@ -22,8 +23,10 @@ public class Server {
     }
 
     public void connect() {
+
         try {
             Socket client = socket.accept();
+            isActive = true;
 
             BufferedReader fromClient = new BufferedReader(new InputStreamReader(client.getInputStream()));
 
@@ -43,5 +46,9 @@ public class Server {
 
     public List<String> getCardList() {
         return cardList;
+    }
+
+    public boolean isActive() {
+        return isActive;
     }
 }
