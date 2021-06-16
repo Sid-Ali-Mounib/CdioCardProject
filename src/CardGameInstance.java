@@ -9,6 +9,10 @@ public class CardGameInstance {
     public CardGameInstance() {
         piles = new TableauPile[7];
         solver = new SolitaireSolver();
+
+        for (int i = 0; i < 7 ; i++) {
+            piles[i] = new TableauPile();
+        }
     }
 
     public void startGame(List<String> stringCards) {
@@ -22,7 +26,6 @@ public class CardGameInstance {
             Card cardIndex = new Card(Suit.valueOf(suit), Rank.setRank(words[1]));
 
             try {
-                piles[i] = new TableauPile();
                 piles[i].addCard(cardIndex);
             } catch (Exception e) {
                 System.out.println("Error");

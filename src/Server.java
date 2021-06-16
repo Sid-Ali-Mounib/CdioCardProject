@@ -23,23 +23,28 @@ public class Server {
         }
     }
 
+
     public void connect() {
 
-        try {
-            Socket client = socket.accept();
-            isActive = true;
+        while (true) {
+            try {
+                Socket client = socket.accept();
 
-            BufferedReader fromClient = new BufferedReader(new InputStreamReader(client.getInputStream()));
+                BufferedReader fromClient = new BufferedReader(new InputStreamReader(client.getInputStream()));
 
-            String clientData = fromClient.readLine();
-            String[] dataArray = clientData.split("_");
+                String clientData = fromClient.readLine();
+                System.out.println(clientData);
+                String[] dataArray = clientData.split("_");
 
-            Collections.addAll(cardList, dataArray);
+                Collections.addAll(cardList, dataArray);
 
             cardGame.startGame(cardList);
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch (IOException e) {
+                System.out.println("Reconnected");
+                isActive = false;
+
+            }
         }
     }
 
