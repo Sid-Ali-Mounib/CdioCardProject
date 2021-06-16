@@ -1,56 +1,37 @@
-import java.util.ArrayList;
+import java.util.List;
 
 
 public class CardGameInstance {
 
-    public void startGame(){
+    private final Pile[] piles;
+    private SolitaireSolver solver;
 
-        CardSolver Solver = new CardSolver();
-
-        ArrayList<Card> visibleCard = new ArrayList<Card>();
-        ArrayList<String> stringCards = new ArrayList<String>();
-
-
-        //ArrayList<Card>[] lists =new ArrayList[7];
-        Pile[] piles = new TableauPile[7];
-
-
-
-        stringCards.add("Clubs 3");
-        stringCards.add("Clubs King");
-        stringCards.add("Diamonds Queen");
-        stringCards.add("Hearts 8");
-        stringCards.add("Spades 7");
-        stringCards.add("Clubs Jack");
-        stringCards.add("Hearts 5");
-
-
-
-
-    for (int i = 0; i < stringCards.size() ; i++) {
-
-        String[] words = stringCards.get(i).split(" ");
-        String suit = words[0].toUpperCase();
-
-
-        Card cardIndex = new Card(Suit.valueOf(suit),Rank.setRank(words[1]));
-
-        piles[i]=new TableauPile();
-        piles[i].addCard(cardIndex);
-
-
+    public CardGameInstance() {
+        piles = new TableauPile[7];
+        solver = new SolitaireSolver();
     }
 
-    Solver.solveGame(piles);
+    public void startGame(List<String> stringCards) {
+
+        for (int i = 0; i < stringCards.size(); i++) {
+
+            String[] words = stringCards.get(i).split(" ");
+            String suit = words[0].toUpperCase();
 
 
-}
+            Card cardIndex = new Card(Suit.valueOf(suit), Rank.setRank(words[1]));
 
-
-
-
-    private int findValueOfCard(String card){
-        return Integer.parseInt(card);
+            try {
+                piles[i] = new TableauPile();
+                piles[i].addCard(cardIndex);
+            } catch (Exception e) {
+                System.out.println("Error");
+            }
+        }
+        solver.solveGame(piles);
     }
 
+    public Pile[] getPiles() {
+        return piles;
+    }
 }

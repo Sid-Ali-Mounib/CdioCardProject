@@ -1,10 +1,11 @@
 public class CardMain {
     public static void main(String[] args) {
 
-        CardGameInstance game = new CardGameInstance();
+        Server server = Server.getInstance();
 
         do {
-            game.startGame();
-        } while (Server.getInstance().isActive());
+            server.connect();
+        } while (true);
+
     }
 }

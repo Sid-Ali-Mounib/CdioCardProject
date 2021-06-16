@@ -11,6 +11,7 @@ public class Server {
     private ServerSocket socket;
     private static final Server instance = new Server();
     private final List<String> cardList = new ArrayList<>();
+    private final CardGameInstance cardGame = new CardGameInstance();
     private boolean isActive;
 
     private Server() {
@@ -34,6 +35,8 @@ public class Server {
             String[] dataArray = clientData.split("_");
 
             Collections.addAll(cardList, dataArray);
+
+            cardGame.startGame(cardList);
 
         } catch (IOException e) {
             e.printStackTrace();
