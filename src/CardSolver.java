@@ -30,7 +30,8 @@ public class CardSolver {
                                 for (int l = 0; l < rowCard[i].size();) {
                                     rowCard[j].addCard(rowCard[i].getCard(l));
                                     rowCard[i].removeCard(l);
-
+                                    requestNewCard(rowCard[i]);
+                                    
                                 }
                             }
                         }
@@ -43,11 +44,19 @@ public class CardSolver {
         return rowCard;
     }
 
-    private void checkIfPlacable(ArrayList A, Card card){
-
-
-
+    private void requestNewCard(Pile pile) {
+      //  Serverdata = pile;
+        showNewCard(pile);
     }
+
+    private void showNewCard(Pile pile) {
+       
+        Card newCard = null;        
+        pile.addCard(newCard);
+        
+    }
+
+
 
 
 
