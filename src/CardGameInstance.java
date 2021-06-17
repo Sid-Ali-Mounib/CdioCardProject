@@ -3,19 +3,23 @@ import java.util.List;
 
 public class CardGameInstance {
 
-    private final Pile[] piles;
+    private final Pile[] tableauPile;
+    private final Pile[] foundationPile;
     private SolitaireSolver solver;
 
     public CardGameInstance() {
-        piles = new TableauPile[7];
+        tableauPile = new TableauPile[7];
+        foundationPile = new FoundationPile[4];
         solver = new SolitaireSolver();
-
-        for (int i = 0; i < 7 ; i++) {
-            piles[i] = new TableauPile();
-        }
     }
 
     public void startGame(List<String> stringCards) {
+
+
+        for (int i = 0; i < foundationPile.length ; i++) {
+            foundationPile[i] = new FoundationPile();
+        }
+
 
         for (int i = 0; i < stringCards.size(); i++) {
 
@@ -26,15 +30,12 @@ public class CardGameInstance {
             Card cardIndex = new Card(Suit.valueOf(suit), Rank.setRank(words[1]));
 
             try {
-                piles[i].addCard(cardIndex);
+                tableauPile[i] = new TableauPile();
+                tableauPile[i].addCard(cardIndex);
             } catch (Exception e) {
                 System.out.println("Error");
             }
         }
-        solver.solveGame(piles);
-    }
-
-    public Pile[] getPiles() {
-        return piles;
+        System.out.println(solver.solveGame(tableauPile, foundationPile));
     }
 }
