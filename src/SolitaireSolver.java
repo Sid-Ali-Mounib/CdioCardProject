@@ -5,9 +5,23 @@ public class SolitaireSolver {
 
     public String solveGame(Pile[] tableauPile, Pile[] foundationPile) {
 
+        System.out.println("***********************");
+        for (int i = 0; i < tableauPile.length ; i++) {
+            System.out.println(tableauPile[i].getCards().toString());
+        }
+        System.out.println("***********************");
+        try {
+            checkForPlacementInFoundationPile(tableauPile,foundationPile);
+            checkForRegularCardMovement(tableauPile);
+        } catch (Exception e) {
+            System.out.println("Not enough card");
+        }
 
-        checkForPlacementInFoundationPile(tableauPile,foundationPile);
-        checkForRegularCardMovement(tableauPile);
+        for (int i = 0; i < tableauPile.length ; i++) {
+            System.out.println(tableauPile[i].getCards().toString());
+        }
+        System.out.println("***********************");
+
 
 
         return suggestedMoves;
@@ -55,6 +69,7 @@ public class SolitaireSolver {
 
                             foundationPile[j].addCard(tableauPile[i].getCard(tableauPile[i].size() - 1));
                             tableauPile[i].removeCard(tableauPile[i].size() - 1);
+                            showNewCard(tableauPile[i]);
                         }
                     }
                 }

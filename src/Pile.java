@@ -10,7 +10,7 @@ public abstract class Pile {
     }
 
     public void addCard(Card card) {
-        cards.add(card);
+            cards.add(card);
     }
 
     public void removeCard(Card card) {

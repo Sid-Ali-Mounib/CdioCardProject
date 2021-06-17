@@ -1,29 +1,27 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class CardMain {
     public static void main(String[] args) {
- /*
+
+        /*
+        String s = "Hearts 2_Spades 5_Hearts 2_";
+        String[] data = s.split("_");
+        Set<String> strings = new HashSet<>();
+
+        Collections.addAll(strings, data);
+
+        System.out.println(strings.toString());
+
+         */
+
+
+
         Server server = Server.getInstance();
 
         do {
             server.connect();
-        } while (true);*/
+        } while (true);
 
-
-        List<String> cardList = new ArrayList<>();
-        cardList.add("Hearts Ace");
-        cardList.add("Spades 9");
-        cardList.add("Hearts 2");
-        cardList.add("Diamonds 8");
-        cardList.add("Hearts King");
-        cardList.add("Spades Jack");
-        cardList.add("Diamonds 4");
-
-
-
-        CardGameInstance play = new CardGameInstance();
-        play.startGame(cardList);
 
     }
 }
